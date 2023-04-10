@@ -1,0 +1,20 @@
+<!--一覧画面-->
+<div class="list-wrap">
+<% @lists.each do |list| %>
+<!--Listレコードの数だけ繰り返し処理を行う。
+各レコードの内容は、listという変数に格納-->
+
+  <div class="list-box">
+    <% if list.image.attached? %>
+      <%= image_tag list.image, size: "200x200" %>
+    <% else %>
+      <%= image_tag 'no_image', size: "200x200" %>
+    <% end %>
+    <div class="list-comment">
+      <span class="list-body"><%= list.body %></span>
+      <span class="list-title"><%=link_to list.title, list_path(list.id) %></span>
+    </div>
+  </div>
+<% end %>
+</div>
+
